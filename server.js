@@ -10,4 +10,4 @@ app.get('/', (req, res) => {
 })
 
 
-app.listen(process.env.PORT | 3030, () => console.log('Listening on port 3030...'));
+app.listen(process.env.PORT || 3030, () => console.log('Listening on port 3030...'));
