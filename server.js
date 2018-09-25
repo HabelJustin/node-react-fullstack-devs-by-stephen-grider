@@ -6,6 +6,8 @@ const passport = require('passport');
 const cookieSession = require('cookie-session');
 const { mongoURI, cookieKey } = require('./config/keys');
 
+console.log(mongoURI)
+
 
 
 // Connect MongoDB
