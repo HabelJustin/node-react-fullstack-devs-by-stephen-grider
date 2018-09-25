@@ -59,6 +59,7 @@ typings/
 .yarn-integrity
 
 # dotenv environment variables file
+.env.local
 .env
 
 # parcel-bundler cache (https://parceljs.org/)
@@ -107,6 +108,9 @@ bh_unicode_properties.cache
 # Sublime-github package stores a github token in this file
 # https://packagecontrol.io/packages/sublime-github
 GitHub.sublime-settings
+
+# Config files
+dev.js
 
 
 # End of https://www.gitignore.io/api/node,sublimetext
