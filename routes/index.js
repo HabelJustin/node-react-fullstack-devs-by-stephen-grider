@@ -7,7 +7,7 @@ const homeController = require('../controllers/home');
 
 // Passport Strategys
 const googleAuthenticate = passport.authenticate('google', { scope: ['profile', 'email'] })
-const googleAuthenticated = passport.authenticate('google', { failureRedirect: '/?error=authentication-failed' })
+const googleAuthenticated = passport.authenticate('google', { failureRedirect: '/?error=authentication-failed', session: true })
 
 
 module.exports = (app) => {
