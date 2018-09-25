@@ -1,12 +1,10 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-const morgan = require('morgan');
+// const morgan = require('morgan');
 const passport = require('passport');
 const cookieSession = require('cookie-session');
 const { mongoURI, cookieKey } = require('./config/keys');
-
-console.log(mongoURI)
 
 
 
@@ -19,7 +17,7 @@ mongoose
 
 // Setup Middleware
 app.use(express.json());
-app.use(morgan('tiny')); // middleware logging
+// app.use(morgan('tiny')); // middleware logging
 app.use(cookieSession({
 	maxAge: 30*24*60*60*1000,
 	keys: [cookieKey]
