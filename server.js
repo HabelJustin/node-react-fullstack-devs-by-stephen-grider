@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-// const morgan = require('morgan');
+const morgan = require('morgan');
 const passport = require('passport');
 const cookieSession = require('cookie-session');
 const { mongoURI, cookieKey } = require('./config/keys');
@@ -17,7 +17,7 @@ mongoose
 
 // Setup Middleware
 app.use(express.json());
-// app.use(morgan('tiny')); // middleware logging
+app.use(morgan('tiny')); // middleware logging
 app.use(cookieSession({
 	maxAge: 30*24*60*60*1000,
 	keys: [cookieKey]
@@ -29,9 +29,9 @@ require('./services/passport') // make sure passport file executed (google oauth
 
 
 // Handling Routing
-require('./routes')(app);
+app.use('/api', require('./routes'));
 
 
 
 // Listen to Port
-app.listen(process.env.PORT || 3030, () => console.log('Listening on port 3030...'));
+app.listen(process.env.PORT || 5000, () => console.log('Listening on port 5000...'));

@@ -1,5 +1,3 @@
 module.exports = (req, res, next) => {
-	const { user } = req;
-
-	res.send(user);
+	res.redirect(`/?loggedIn&userId=${req.user.id}`);
 }

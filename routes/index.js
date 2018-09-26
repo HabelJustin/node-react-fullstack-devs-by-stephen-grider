@@ -10,40 +10,38 @@ const googleAuthenticate = passport.authenticate('google', { scope: ['profile', 
 const googleAuthenticated = passport.authenticate('google', { failureRedirect: '/?error=authentication-failed', session: true })
 
 
-module.exports = (app) => {
-
 	// @GET 	'/'
 	// @Desc 	Serve Home Page
-	app.get('/', (req, res) => {
+	router.get('/', (req, res) => {
 		res.send('Home')
 	})
 
 	
 	// @GET 	'/auth/google'
 	// @Desc 	 Start Google Authentication
-	app.get('/auth/google', googleAuthenticate)
+	router.get('/auth/google', googleAuthenticate)
 
 
 	// @GET 	'/auth/google/callback'
 	// @Desc 	Google Authenticated Callback
-	app.get('/auth/google/callback', googleAuthenticated, homeController)
+	router.get('/auth/google/callback', googleAuthenticated, homeController)
 
 
 	// @GET 	'/api/resources'
 	// @Desc 	Request Some Information
-	app.get('/api/resources', (req,res) => {
-		req.user ? res.send(req.user):res.send('Please Login')
+	router.get('/resources', (req,res) => {
+		req.user ? res.json(req.user):res.json({success:false, msg: 'Please Login'})
 	})
 
 
 	// @GET 	'/auth/logout'
 	// @Desc 	Logging Out User From App
-	app.get('/auth/logout', (req, res) => {
+	router.get('/auth/logout', (req, res) => {
 		req.logout();
-		res.redirect('/api/resources');
+		res.redirect('/?loggedOut');
 	})
 
-}
+module.exports = router;
 
 
 
